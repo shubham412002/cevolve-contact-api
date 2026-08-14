@@ -23,15 +23,31 @@ const sendContactForm = async (req, res) => {
     // // Send acknowledgement to customer
     // await sendAcknowledgement(leadData);
 
+    // await Promise.all([
+    //   sendLeadNotification(leadData),
+    //   sendAcknowledgement(leadData),
+    // ]);
+
+    // return res.status(200).json({
+    //   success: true,
+    //   message:
+    //     "Thank you for contacting Cevolve Technologies. We have received your enquiry successfully.",
+    // });
+
     await Promise.all([
       sendLeadNotification(leadData),
       sendAcknowledgement(leadData),
     ]);
 
-    return res.status(200).json({
+    // Add to cooldown ONLY after successful processing
+    req.emailCooldownCache.set(
+      leadData.email.trim().toLowerCase(),
+      Date.now()
+    );
+
+    res.status(200).json({
       success: true,
-      message:
-        "Thank you for contacting Cevolve Technologies. We have received your enquiry successfully.",
+      message: "Thank you! Your enquiry has been submitted successfully.",
     });
   } catch (error) {
     console.error("Contact Form Error:", error);
