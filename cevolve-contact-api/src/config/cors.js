@@ -13,6 +13,7 @@ const corsOptions = {
       process.env.FRONTEND_URL,
       "https://cevolvetechnologies.com",
       "https://www.cevolvetechnologies.com",
+      "https://shubham412002.github.io"
     ];
 
     if (allowedOrigins.includes(origin)) {
