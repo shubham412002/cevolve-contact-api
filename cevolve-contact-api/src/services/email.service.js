@@ -14,7 +14,7 @@ const sendLeadNotification = async (leadData) => {
 
     replyTo: leadData.email,
 
-    subject: `🚀 New Website Lead | ${leadData.name}`,
+    subject: `New Website Lead | ${leadData.name}`,
 
     html,
   };

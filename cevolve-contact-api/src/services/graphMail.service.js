@@ -69,7 +69,7 @@ async function sendLeadNotification(leadData) {
   return sendMail({
     to: process.env.MAIL_TO,
 
-    subject: `🚀 New Website Lead | ${leadData.name}`,
+    subject: ` New Website Lead | ${leadData.name}`,
 
     html,
 
